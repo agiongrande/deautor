@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "prueba.css",
+	"sources": [
+		"../scss/prueba.scss"
+	],
+	"sourcesContent": [
+		"#header{\r\n\tmin-height: 100px;\r\n\tdisplay: flex;\r\n\tflex-direction: column;\r\n\talign-items: center;\r\n\tbackground-image: linear-gradient(to bottom,#000000,#010112);\r\n\r\n\t.logo{\r\n\t\tpadding-left: 10px;\r\n\t}\r\n\r\n\t.logo:hover{\r\n\t\ttransform:scale(1.02);\r\n\t}\r\n}\r\n\r\n\r\n#main{\r\n\tflex-grow: 1;\r\n\r\n\t.tituloSeccion{\r\n\t\tcolor: #565667;\r\n\t\tfont-weight: bold;\r\n\t\tfont-family: 'Dancing Script', cursive;\r\n\t\tfont-weight: 700;\r\n\t\tfont-size: 48px;\r\n\t}\r\n}\r\n\r\n#footer{\r\n\tbackground-image: linear-gradient(to top,#000000,#010112);\r\n\r\n\t.logoRedes{\r\n\t\twidth: 25px;\r\n\t}\r\n\r\n\t.textoCentrado{\r\n\t\ttext-align: center;\r\n\t}\r\n}"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,OAAO,CAAA;EACN,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,gBAAgB,EAAE,4CAA0C;CAS5D;;;AAdD,AAOC,OAPM,CAON,KAAK,CAAA;EACJ,YAAY,EAAE,IAAI;CAClB;;;AATF,AAWC,OAXM,CAWN,KAAK,AAAA,MAAM,CAAA;EACV,SAAS,EAAC,WAAW;CACrB;;;AAIF,AAAA,KAAK,CAAA;EACJ,SAAS,EAAE,CAAC;CASZ;;;AAVD,AAGC,KAHI,CAGJ,cAAc,CAAA;EACb,KAAK,EAAE,OAAO;EACd,WAAW,EAAE,IAAI;EACjB,WAAW,EAAE,yBAAyB;EACtC,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;CACf;;;AAGF,AAAA,OAAO,CAAA;EACN,gBAAgB,EAAE,yCAAuC;CASzD;;;AAVD,AAGC,OAHM,CAGN,UAAU,CAAA;EACT,KAAK,EAAE,IAAI;CACX;;;AALF,AAOC,OAPM,CAON,cAAc,CAAA;EACb,UAAU,EAAE,MAAM;CAClB"
+}

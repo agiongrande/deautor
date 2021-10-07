@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>De autor</title>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+<!--Este es el header de la página-->
+<div>
+	<div class="enlinea"><a href="index.html"><img src="img/logo.jpg"></a></div>
+	<div class="enlinea">
+		<ul class="enlinea">
+			<li><a href="recetas.html">Recetas</a></li>
+			<li><a href="bares.html">Bares</a></li>
+			<li><a href="cursos.html">Cursos</a></li>
+			<li><a href="contacto.html">Contacto</a></li>
+		</ul>
+	</div>
+</div>
+<!--Acá va el contenido de la sección contacto. Formulario de contacto de los visitantes de la web-->
+<div>
+	<p class="tituloSeccion">Contacto</p>
+</div>
+<div>
+	<form method="GET" action="">
+		<div class="enbloque">
+			<label>Nombre: </label>
+			<input type="text" name="nombre" id="nombre" placeholder="Insertá tu nombre">
+		</div>
+		<div class="enbloque">
+			<label>Motivo</label>
+			<select name="tema" class="enlinea">
+				<option value="Consulta">Consulta</option>
+				<option value="Recomendacion">Recomendación</option>
+				<option value="TengoBar">Tengo un bar</option>
+			</select>
+		</div>
+		<div class="enbloque">
+			<label for="news">¿Quiéres recibir noticias de DeAutor?</label>
+			<input type="checkbox" name="news" id="news" value="news" checked>
+		</div>
+		<label>Mensaje:</label>
+		<textarea name="mensaje"></textarea>
+		<input type="submit" value="enviar">
+		<input type="reset" value="reset">
+	</form>
+</div>
+<!--Pie de página-->
+<div>
+	<p>Información de pie de página / copyright</p>
+</div>
+</body>
+</html>

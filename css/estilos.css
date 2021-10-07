@@ -1,0 +1,194 @@
+@charset "UTF-8";
+/* Colores principales */
+/* Colores para diseño alternativo */
+/* Si $Design está en "1" tiene el diseño tradicional, en otro valor tiene el diseño alternativo */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #242434;
+  font-family: 'Open Sans', sans-serif;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+#header {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(to bottom, #000000, #010112);
+}
+
+#header .logo {
+  padding-left: 30px;
+}
+
+#header .logo:hover {
+  transform: scale(1.02);
+}
+
+#main {
+  flex-grow: 1;
+}
+
+#main .banner {
+  text-align: center;
+  max-width: 1024px;
+}
+
+#main .contenedorRecetas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+#main .contenedorRecetas .receta {
+  margin: 2% 3% 2% 3%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#main .contenedorRecetas .receta img {
+  filter: sepia(80%);
+  border-radius: 10px;
+  animation-duration: 2s;
+  animation-name: aparecer;
+  transform: scale(0.99);
+}
+
+#main .contenedorRecetas .receta img:hover {
+  filter: sepia(0%);
+  transform: scale(1);
+}
+
+#main .contenedorRecetas .imagenPrincipal {
+  max-width: 200px;
+}
+
+#main .modalOscuro {
+  background-color: #000000;
+  border-radius: 20px;
+}
+
+#main .botonOscuro {
+  background-color: transparent;
+  border-color: #000000;
+  border-radius: 10px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+#main .botonOscuro:hover {
+  background-color: #343445;
+}
+
+#main .tarjetaChica {
+  width: 12rem;
+  background-color: #333333;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#footer {
+  background-image: linear-gradient(to top, #000000, #010112);
+}
+
+#footer .textoCentrado {
+  text-align: center;
+}
+
+.btn--facebook {
+  background-image: url("../img/icon_facebook.PNG");
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.btn--instagram {
+  background-image: url("../IMG/icon_instagram.png");
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.btn--whatsapp {
+  background-image: url("../IMG/icon_whatsapp.png");
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.Texto-0 {
+  font-family: 'Open Sans', sans-serif;
+  color: #eee;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.Texto-1 {
+  font-size: 10px;
+  color: #565667;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  margin: 15px 0px 15px 0px;
+}
+
+.Texto-2 {
+  font-size: 20px;
+  color: #565667;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  margin: 15px 0px 15px 0px;
+}
+
+.Texto-3 {
+  font-size: 30px;
+  color: #565667;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  margin: 15px 0px 15px 0px;
+}
+
+.Texto-4 {
+  font-size: 40px;
+  color: #565667;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  margin: 15px 0px 15px 0px;
+}
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.textoCentrado {
+  text-align: center;
+}
+
+.contenidoCentrado {
+  display: flex;
+  justify-content: center;
+  margin: 0% 20px 0% 20px;
+}
