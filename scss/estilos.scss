@@ -1,10 +1,10 @@
-/* Colores principales */
+/* Colores alternativos */
 $fondoAlt: #572434;
 $fondoBotonAlt: #793445;
 $gradientFinalAlt: #790112;
 $colorTituloAlt: #975667;
 
-/* Colores para diseño alternativo */
+/* Colores principales */
 $fondo: #242434;
 $fondoBoton: #343445;
 $gradientFinal: #010112;
@@ -19,11 +19,7 @@ $Design: 1;
 }
 
 body{ 
-	@if $Design == 1 {
-		background-color: $fondo;
-	} @else {
-		background-color: $fondoAlt;
-	}
+	background-color: #000000;
 	font-family: 'Open Sans', sans-serif; 
 	color:#eee;
 	display: flex;
@@ -31,9 +27,14 @@ body{
 	min-height: 100vh;
 	font-weight: 300;
 	font-size: 14px;
+	margin: 0 auto; 
 } 
 
-
+@media all and (min-width: 1200px){
+	body{ 
+		width: 1200px;
+	}
+}
 
 #header{
 	min-height: 100px;
@@ -59,6 +60,11 @@ body{
 
 #main{
 	flex-grow: 1;
+	@if $Design == 1 {
+		background-color: $fondo;
+	} @else {
+		background-color: $fondoAlt;
+	}
 
 	.banner{
 		text-align:center;
@@ -143,9 +149,9 @@ body{
 }
 
 $redes: ( 
-        facebook: url("../img/icon_facebook.PNG"),
-        instagram: url("../IMG/icon_instagram.png"),
-        whatsapp: url("../IMG/icon_whatsapp.png")
+        facebook: url("../img/icon_facebook.png"),
+        instagram: url("../img/icon_instagram.png"),
+        whatsapp: url("../img/icon_whatsapp.png")
 ); 
 
 @each $red, $imagen in $redes {
@@ -167,7 +173,7 @@ $redes: (
 
 @for $i from 1 through 4 {
     .Texto-#{$i} { 
-	  	font-size: $i * 10px; 
+	  	font-size: $i * 6px; 
 		@if $Design == 1 {
 			color: $colorTitulo;
 		} @else {
@@ -180,6 +186,32 @@ $redes: (
 	}
 }
 
+@media all and (min-width: 480px){
+	@for $i from 1 through 4 {
+	    .Texto-#{$i} { 
+		  	font-size: $i * 10px; 
+		}
+	}
+}
+
+@for $i from 1 through 4 {
+    .banner#{$i} {
+	background-image: url("../img/banner#{$i}_mbl.png");
+	width: 100%;
+	min-height: 250px;
+	background-size: cover;
+	background-position:center;
+	}	
+}
+
+@for $i from 1 through 4 {
+	@media all and (min-width: 500px){
+		.banner#{$i} {
+			background-image: url("../img/banner#{$i}.png");
+			min-height: 450px;
+		}
+	}
+}
 
 @keyframes aparecer{
 	0% {

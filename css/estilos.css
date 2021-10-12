@@ -1,6 +1,6 @@
 @charset "UTF-8";
+/* Colores alternativos */
 /* Colores principales */
-/* Colores para diseño alternativo */
 /* Si $Design está en "1" tiene el diseño tradicional, en otro valor tiene el diseño alternativo */
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #242434;
+  background-color: #000000;
   font-family: 'Open Sans', sans-serif;
   color: #eee;
   display: flex;
@@ -16,6 +16,13 @@ body {
   min-height: 100vh;
   font-weight: 300;
   font-size: 14px;
+  margin: 0 auto;
+}
+
+@media all and (min-width: 1200px) {
+  body {
+    width: 1200px;
+  }
 }
 
 #header {
@@ -36,6 +43,7 @@ body {
 
 #main {
   flex-grow: 1;
+  background-color: #242434;
 }
 
 #main .banner {
@@ -108,7 +116,7 @@ body {
 }
 
 .btn--facebook {
-  background-image: url("../img/icon_facebook.PNG");
+  background-image: url("../img/icon_facebook.png");
   width: 25px;
   height: 25px;
   background-size: cover;
@@ -116,7 +124,7 @@ body {
 }
 
 .btn--instagram {
-  background-image: url("../IMG/icon_instagram.png");
+  background-image: url("../img/icon_instagram.png");
   width: 25px;
   height: 25px;
   background-size: cover;
@@ -124,7 +132,7 @@ body {
 }
 
 .btn--whatsapp {
-  background-image: url("../IMG/icon_whatsapp.png");
+  background-image: url("../img/icon_whatsapp.png");
   width: 25px;
   height: 25px;
   background-size: cover;
@@ -139,7 +147,7 @@ body {
 }
 
 .Texto-1 {
-  font-size: 10px;
+  font-size: 6px;
   color: #565667;
   font-weight: bold;
   font-family: 'Dancing Script', cursive;
@@ -148,7 +156,7 @@ body {
 }
 
 .Texto-2 {
-  font-size: 20px;
+  font-size: 12px;
   color: #565667;
   font-weight: bold;
   font-family: 'Dancing Script', cursive;
@@ -157,7 +165,7 @@ body {
 }
 
 .Texto-3 {
-  font-size: 30px;
+  font-size: 18px;
   color: #565667;
   font-weight: bold;
   font-family: 'Dancing Script', cursive;
@@ -166,12 +174,87 @@ body {
 }
 
 .Texto-4 {
-  font-size: 40px;
+  font-size: 24px;
   color: #565667;
   font-weight: bold;
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
   margin: 15px 0px 15px 0px;
+}
+
+@media all and (min-width: 480px) {
+  .Texto-1 {
+    font-size: 10px;
+  }
+  .Texto-2 {
+    font-size: 20px;
+  }
+  .Texto-3 {
+    font-size: 30px;
+  }
+  .Texto-4 {
+    font-size: 40px;
+  }
+}
+
+.banner1 {
+  background-image: url("../img/banner1_mbl.png");
+  width: 100%;
+  min-height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner2 {
+  background-image: url("../img/banner2_mbl.png");
+  width: 100%;
+  min-height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner3 {
+  background-image: url("../img/banner3_mbl.png");
+  width: 100%;
+  min-height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner4 {
+  background-image: url("../img/banner4_mbl.png");
+  width: 100%;
+  min-height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+@media all and (min-width: 500px) {
+  .banner1 {
+    background-image: url("../img/banner1.png");
+    min-height: 450px;
+  }
+}
+
+@media all and (min-width: 500px) {
+  .banner2 {
+    background-image: url("../img/banner2.png");
+    min-height: 450px;
+  }
+}
+
+@media all and (min-width: 500px) {
+  .banner3 {
+    background-image: url("../img/banner3.png");
+    min-height: 450px;
+  }
+}
+
+@media all and (min-width: 500px) {
+  .banner4 {
+    background-image: url("../img/banner4.png");
+    min-height: 450px;
+  }
 }
 
 @keyframes aparecer {
