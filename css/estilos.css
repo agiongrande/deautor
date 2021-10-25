@@ -25,6 +25,12 @@ body {
   }
 }
 
+.carousel-caption {
+  background-color: #242434;
+  opacity: 0.7;
+  border-radius: 5px;
+}
+
 #header {
   min-height: 100px;
   display: flex;
@@ -44,6 +50,7 @@ body {
 #main {
   flex-grow: 1;
   background-color: #242434;
+  /* Anulo los efectos de botones de Bootstrap para este botón */
 }
 
 #main .banner {
@@ -51,7 +58,7 @@ body {
   max-width: 1024px;
 }
 
-#main .contenedorRecetas {
+#main .contenedorItem {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -59,14 +66,14 @@ body {
   flex-wrap: wrap;
 }
 
-#main .contenedorRecetas .receta {
+#main .contenedorItem .item {
   margin: 2% 3% 2% 3%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 }
 
-#main .contenedorRecetas .receta img {
+#main .contenedorItem .item img {
   filter: sepia(80%);
   border-radius: 10px;
   animation-duration: 2s;
@@ -74,25 +81,48 @@ body {
   transform: scale(0.99);
 }
 
-#main .contenedorRecetas .receta img:hover {
+#main .contenedorItem .item img:hover {
   filter: sepia(0%);
   transform: scale(1);
 }
 
-#main .contenedorRecetas .imagenPrincipal {
+#main .contenedorItem .imagenPrincipal {
   max-width: 200px;
 }
 
 #main .modalOscuro {
-  background-color: #000000;
+  background-color: #010112;
+  background-color: #010112;
   border-radius: 20px;
+}
+
+#main .btnEnviar {
+  width: 100%;
+  background-color: #010112;
+  margin-bottom: 5px;
+  border-color: #000000;
+  border-radius: 20px;
+}
+
+#main .btnEnviar:hover {
+  background-color: #242434;
+}
+
+#main .nombreItem {
+  border-color: #000000;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 5px;
+  width: 100%;
+  padding: 5px 5px 5px 5px;
 }
 
 #main .botonOscuro {
   background-color: transparent;
-  border-color: #000000;
-  border-radius: 10px;
-  margin-top: 5px;
+  border-width: 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   width: 100%;
 }
 
@@ -105,6 +135,12 @@ body {
   background-color: #333333;
   border-radius: 10px;
   margin-bottom: 10px;
+}
+
+#main .mapa {
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 
 #footer {

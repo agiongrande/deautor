@@ -10,6 +10,14 @@ $fondoBoton: #343445;
 $gradientFinal: #010112;
 $colorTitulo: #565667;
 
+@mixin condicional($color1,$color2) {
+	@if $Design == 1 {
+		background-color: $color1;
+	} @else {
+		background-color: $color2;
+	}
+}
+
 /* Si $Design está en "1" tiene el diseño tradicional, en otro valor tiene el diseño alternativo */
 $Design: 1;
 
@@ -36,6 +44,12 @@ body{
 	}
 }
 
+.carousel-caption{
+	@include condicional($fondo, $fondoAlt);
+	opacity: 0.7;
+	border-radius:5px;
+}
+
 #header{
 	min-height: 100px;
 	display: flex;
@@ -60,26 +74,22 @@ body{
 
 #main{
 	flex-grow: 1;
-	@if $Design == 1 {
-		background-color: $fondo;
-	} @else {
-		background-color: $fondoAlt;
-	}
+	@include condicional($fondo, $fondoAlt);
 
 	.banner{
 		text-align:center;
 		max-width: 1024px;
 	}
 
-	.contenedorRecetas{
-	display:flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	.contenedorItem{
+		display:flex;
+		flex-direction: row;
+		justify-content: space-around;
+		flex-wrap: wrap;
 
-	flex-wrap: wrap;
+		flex-wrap: wrap;
 
-		.receta{
+		.item{
 			margin: 2% 3% 2% 3%;
 			display:flex;
 			flex-wrap: wrap;
@@ -106,24 +116,45 @@ body{
 	}
 
 	.modalOscuro{
-		background-color: #000000;
+		background-color: $gradientFinal;
+		@include condicional($gradientFinal, $gradientFinalAlt);
 		border-radius: 20px;
 	}
 
-	.botonOscuro{
-		background-color: transparent;
+	.btnEnviar{
+		width: 100%;
+		@include condicional($gradientFinal, $gradientFinalAlt);
+		margin-bottom:5px;
+		border-color: #000000;
+		border-radius:20px;
+	}
+
+	.btnEnviar:hover{
+		@include condicional($fondo, $fondoAlt);
+	}
+
+	.nombreItem{
 		border-color: #000000;
 		border-radius: 10px;
-		margin-top:5px;
+		border-width: 1px;
+ 		border-style: solid;
+		margin-top:5px; 
+ 		width:100%;
+		padding: 5px 5px 5px 5px;
+ 	}
+
+
+/* Anulo los efectos de botones de Bootstrap para este botón */
+	.botonOscuro{ 
+		background-color: transparent;
+		border-width: 0px; 
+		margin: 0px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
 		width: 100%;
 	}
 
 	.botonOscuro:hover{
-		@if $Design == 1 {
-			background-color: $fondoBoton;
-		} @else {
-			background-color: $fondoBotonAlt;
-		}
+		@include condicional($fondoBoton, $fondoBotonAlt);
 	}
 
 	.tarjetaChica{
@@ -133,6 +164,11 @@ body{
 		margin-bottom:10px;
 	}
 
+	.mapa{
+		left: 0;
+	  	top: 0;
+	  	width: 100%;
+	}
 }
 
 
@@ -221,7 +257,6 @@ $redes: (
 		opacity: 1;
 	}	
 }
-
 
 .textoCentrado{
 	text-align: center;
