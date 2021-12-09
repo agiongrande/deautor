@@ -1,147 +1,213 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>De Autor - Contacto</title>
-	<meta name=viewport content="width=device-width", inicial-scale=1>
-	<meta name="description" content="Portal para los amantes de los cócteles de autor">
-	<meta name="keywords" content="Cocteles, recetas, tragos, bares">
-	<meta charset="UTF-8"/>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-</head>
-<body>
-<!--Este es el header de la página-->
-<div id="header">
-	<div class="container-fluid">
-		<nav class="navbar navbar-expand-md navbar-dark">
-		  <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="DeAutor"></a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarNav">
-		    <ul class="navbar-nav">
-		      <li class="nav-item">
-		        <a class="nav-link" href="recetas.html">Recetas <span class="sr-only">(current)</span></a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="bares.html">Bares</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="cursos.html">Cursos</a>
-		      </li>
-		      <li class="nav-item active">
-		        <a class="nav-link" href="contacto.html">Contacto</a>
-		      </li>
-		    </ul>
-		  </div>
-		</nav>
-	</div>
-</div>
-<!--Acá va el contenido de la sección contacto. Formulario de contacto de los visitantes de la web-->
-<div id="main">	
-	<div>
-		<H1 class="textoCentrado Texto-4">Contactá a DeAutor</H1>
-	</div>
-	<div class="contenidoCentrado row">
-		<div class="col-md-6 mb-12">
-			<p class="Texto-3">
-				Sobre nosotros
-			</p>
-			<p class="Texto-0">
-				<span class="Texto-2">DeAutor</span> es un sitio creado para brindar información sobre tragos de autor. En DeAutor encontrarás recetas para que puedas armar tus tragos, información sobre cursos de coctelería para que puedas aprender a armarlos, y diferentes bares donde ir a probar innovadoras recetas.	
-			</p>
-			<p class="Texto-0">
-				DeAutor surgió a raíz del encuentro de un grupo de amigos que, cansador de tomar siempre lo mismo, decidieron recorrer bares para encontrar las mejores recetas, y luego, comenzaron a preparar sus propios <span class="Texto-2">tragos de autor</span>.
-			</p>
-		</div>
-		<div class="col-md-6 mb-12">
-			<p class="Texto-3">
-				Contactanos!
-			</p>		
-			<form class="needs-validation" novalidate>
-				<div class="form-row">
-			    	<div class="col-md-6 mb-12">
-			    		<label for="NombreText">Nombre</label>
-			      		<input type="text" class="form-control" id="NombreText" value="" required>
-			      		<div class="invalid-feedback">
-			        		Escribe tu nombre!
-			      		</div>
-			    	</div>
-			    	<div class="col-md-6 mb-12">
-			      		<label for="MotivoSelect">Motivo</label>
-			      		<select class="custom-select" id="MotivoSelect" required>
-					        <option selected disabled value="">Motivo</option>
-					        <option>Consulta</option>
-					        <option>Recomendación</option>
-					        <option>Tengo un bar</option>
-					        <option>Subí tu receta</option>
-				      	</select>
-				      	<div class="invalid-feedback">
-				        	Por favor elegí un motivo
-				      	</div>
-			    	</div>
-			  	</div>
-			  	<div class="form-row">
-				   	<div class="col-md-12 mb-12">
-				      	<label for="MailText">Mail</label>
-				      	<input type="text" class="form-control" id="MailText" value="" required>
-				      	<div class="invalid-feedback">
-				        	Escribí un mail!
-				    	</div>
-				    </div>
-				</div>
-				<div class="form-row">
-				    <div class="col-md-12 mb-12">
-					  	<div class="form-group">
-					    	<label for="MensajeArea">Mensaje</label>
-					    	<textarea class="form-control" id="MensajeArea" rows="3" required></textarea>
-					    	<div class="invalid-feedback">
-					    		Por favor escribí un mensaje
-					    	</div>
-					  	</div>
-				    </div>
-				</div>
-				<div class="form-group">
-				    <div class="form-check">
-				    	<input class="form-check-input" type="checkbox" value="" id="invalidCheck">
-				    	<label class="form-check-label" for="invalidCheck">
-				        	¿Querés recibir noticias de DeAutor?
-				      	</label>
-				    </div>
-				</div>
-			  	<button class="btn btn-primary btnEnviar" type="submit">Enviar</button>
-			</form>
-		</div>
-	</div>
-</div>	
-<!--Pie de página-->
-<div id="footer" class="textoCentrado">
-	<p>Copyright 2021: DeAutor.com</p>
-	<a href="http://www.instagram.com" target="_blank"><div class="btn--instagram"></div></a>
-	<a href="http://www.facebook.com" target="_blank"><div class="btn--facebook"></div></a>
-	<a href="http://www.whatsapp.com" target="_blank"><div class="btn--whatsapp"></div></a>
-</div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
-</body>
+  <head>
+    <title>De Autor - Contacto</title>
+    <meta name="viewport" content="width=device-width" , inicial-scale="1" />
+    <meta
+      name="description"
+      content="Portal para los amantes de los cócteles de autor"
+    />
+    <meta name="keywords" content="Cocteles, recetas, tragos, bares" />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+  </head>
+  <body>
+    <!--Este es el header de la página-->
+    <div id="header">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <a class="navbar-brand" href="index.html"
+            ><img src="img/logo.png" alt="DeAutor"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="recetas.html"
+                  >Recetas <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="bares.html">Bares</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="tienda.html">Tienda</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <!--Acá va el contenido de la sección contacto. Formulario de contacto de los visitantes de la web-->
+    <div id="main">
+      <div>
+        <h1 class="textoCentrado Texto-6">Contactá a DeAutor</h1>
+      </div>
+      <div class="contenidoCentrado row">
+        <div class="col-md-6 mb-12">
+          <p class="Texto-4">Sobre nosotros</p>
+          <p class="Texto-0">
+            <span class="Texto-2">DeAutor</span> es un sitio creado para brindar
+            información sobre tragos de autor. En DeAutor encontrarás recetas
+            para que puedas armar tus tragos, información sobre cursos de
+            coctelería para que puedas aprender a armarlos, y diferentes bares
+            donde ir a probar innovadoras recetas.
+          </p>
+          <p class="Texto-0">
+            DeAutor surgió a raíz del encuentro de un grupo de amigos que,
+            cansador de tomar siempre lo mismo, decidieron recorrer bares para
+            encontrar las mejores recetas, y luego, comenzaron a preparar sus
+            propios <span class="Texto-3">tragos de autor</span>.
+          </p>
+        </div>
+        <div class="col-md-6 mb-12">
+          <p class="Texto-4">Contactanos!</p>
+          <form class="needs-validation" novalidate>
+            <div class="form-row">
+              <div class="col-md-6 mb-12">
+                <label for="NombreText">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="NombreText"
+                  value=""
+                  required
+                />
+                <div class="invalid-feedback">Escribe tu nombre!</div>
+              </div>
+              <div class="col-md-6 mb-12">
+                <label for="MotivoSelect">Motivo</label>
+                <select class="custom-select" id="MotivoSelect" required>
+                  <option selected disabled value="">Motivo</option>
+                  <option>Consulta</option>
+                  <option>Recomendación</option>
+                  <option>Tengo un bar</option>
+                  <option>Subí tu receta</option>
+                </select>
+                <div class="invalid-feedback">Por favor elegí un motivo</div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-12 mb-12">
+                <label for="MailText">Mail</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="MailText"
+                  value=""
+                  required
+                />
+                <div class="invalid-feedback">Escribí un mail!</div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-12 mb-12">
+                <div class="form-group">
+                  <label for="MensajeArea">Mensaje</label>
+                  <textarea
+                    class="form-control"
+                    id="MensajeArea"
+                    rows="3"
+                    required
+                  ></textarea>
+                  <div class="invalid-feedback">
+                    Por favor escribí un mensaje
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="invalidCheck"
+                />
+                <label class="form-check-label" for="invalidCheck">
+                  ¿Querés recibir noticias de DeAutor?
+                </label>
+              </div>
+            </div>
+            <button class="btn btn-primary btnEnviar" type="submit">
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--Pie de página-->
+    <div id="footer" class="textoCentrado">
+      <p>Copyright 2021: DeAutor.com</p>
+      <a href="http://www.instagram.com" target="_blank"
+        ><div class="btn--instagram"></div
+      ></a>
+      <a href="http://www.facebook.com" target="_blank"
+        ><div class="btn--facebook"></div
+      ></a>
+      <a href="http://www.whatsapp.com" target="_blank"
+        ><div class="btn--whatsapp"></div
+      ></a>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        "use strict";
+        window.addEventListener(
+          "load",
+          function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName("needs-validation");
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(
+              forms,
+              function (form) {
+                form.addEventListener(
+                  "submit",
+                  function (event) {
+                    if (form.checkValidity() === false) {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }
+                    form.classList.add("was-validated");
+                  },
+                  false
+                );
+              }
+            );
+          },
+          false
+        );
+      })();
+    </script>
+  </body>
 </html>

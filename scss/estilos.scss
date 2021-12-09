@@ -8,7 +8,7 @@ $colorTituloAlt: #975667;
 $fondo: #242434;
 $fondoBoton: #343445;
 $gradientFinal: #010112;
-$colorTitulo: #565667;
+$colorTitulo: #898990;
 
 @mixin condicional($color1,$color2) {
 	@if $Design == 1 {
@@ -26,20 +26,20 @@ $Design: 1;
 	padding:0;
 }
 
-body{ 
+body{
 	background-color: #000000;
-	font-family: 'Open Sans', sans-serif; 
+	font-family: 'Open Sans', sans-serif;
 	color:#eee;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 	font-weight: 300;
 	font-size: 14px;
-	margin: 0 auto; 
-} 
+	margin: 0 auto;
+}
 
 @media all and (min-width: 1200px){
-	body{ 
+	body{
 		width: 1200px;
 	}
 }
@@ -55,7 +55,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	
+
 	@if $Design == 1 {
 		background-image: linear-gradient(to bottom,#000000,$gradientFinal);
 	} @else {
@@ -76,49 +76,31 @@ body{
 	flex-grow: 1;
 	@include condicional($fondo, $fondoAlt);
 
-	.banner{
-		text-align:center;
-		max-width: 1024px;
-	}
+	.formularioCompra{
+		border-color: #000000;
+		border-radius: 10px;
+		border-width: 1px;
+		border-style: solid;
 
-	.contenedorItem{
+		justify-content: space-around;
+		align-items:center;
+
+		text-align: center;
+
+		margin: 2% 3% 2% 3%;
+
 		display:flex;
 		flex-direction: row;
-		justify-content: space-around;
-		flex-wrap: wrap;
 
-		flex-wrap: wrap;
-
-		.item{
-			margin: 2% 3% 2% 3%;
-			display:flex;
-			flex-wrap: wrap;
-			flex-direction: column;
-
-			img{
-				filter: sepia(80%);
-				border-radius: 10px;
-				animation-duration: 2s;
-				animation-name: aparecer;
-				transform: scale(0.99);
-				
-				
-			}
-			img:hover{
-				filter: sepia(0%);
-				transform: scale(1)
-			}
+		input{
+			width: 90% !important;
+			height: 90% !important;
+			font-size: 14px;
+			text-align: center;
+			margin: auto;
+			margin-top: -6px;
+			margin-bottom: 8px;
 		}
-
-		.imagenPrincipal{
-			max-width: 200px;
-		}
-	}
-
-	.modalOscuro{
-		background-color: $gradientFinal;
-		@include condicional($gradientFinal, $gradientFinalAlt);
-		border-radius: 20px;
 	}
 
 	.btnEnviar{
@@ -133,21 +115,137 @@ body{
 		@include condicional($fondo, $fondoAlt);
 	}
 
-	.nombreItem{
+	.banner{
+		text-align:center;
+		max-width: 1024px;
+	}
+
+	.contenedorItem{
+		display:flex;
+		flex-direction: row;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		align-items: center;
+
+		.item{
+			border-color: #000000;
+			border-radius: 10px;
+			border-width: 1px;
+			border-style: solid;
+
+			justify-content: space-around;
+			align-items:center;
+
+			height: 200px;
+			width: 350px;
+
+			margin: 2% 3% 2% 3%;
+
+			display:flex;
+			flex-direction: row;
+
+			img{
+				border-radius: 10px;
+				animation-duration: 2s;
+				animation-name: aparecer;
+				height: 180px;
+				margin-left: 10px;
+			}
+		}
+
+		.itemCarrito{
+			border-color: #000000;
+			border-radius: 10px;
+			border-width: 1px;
+			border-style: solid;
+
+			justify-content: space-around;
+			align-items: center;
+
+			height: 130px;
+			width: 220px;
+
+			margin: 2% 3% 2% 3%;
+			display:flex;
+			flex-direction: row;
+
+			img{
+				border-radius: 10px;
+				animation-duration: 2s;
+				animation-name: aparecer;
+				height: 100px;
+				margin-left: 10px;
+			}
+		}
+
+		.imagenPrincipal{
+			max-width: 200px;
+		}
+	}
+
+	.contenedorCarrito{
+		display:flex;
+		flex-direction: column;
+		justify-content:first baseline;
+		flex-wrap: wrap;
+		align-items: initial;
+		min-height: 100%;
+	}
+
+	.modalOscuro{
+		background-color: $gradientFinal;
+		@include condicional($gradientFinal, $gradientFinalAlt);
+		border-radius: 20px;
+	}
+
+	.btnTienda{
+		width: 90%;
+		@include condicional($gradientFinal, $gradientFinalAlt);
+		margin-bottom:5px;
 		border-color: #000000;
-		border-radius: 10px;
-		border-width: 1px;
- 		border-style: solid;
-		margin-top:5px; 
- 		width:100%;
-		padding: 5px 5px 5px 5px;
- 	}
+		border-radius:20px;
+		font-weight: 300;
+		font-family: 'Dancing Script', cursive;
+	}
+
+	.btnTienda:hover{
+		@include condicional($fondo, $fondoAlt);
+	}
+
+	.btnCantidad{
+		width: 40px;
+		height: 40px;
+		@include condicional($gradientFinal, $gradientFinalAlt);
+		border-color: #000000;
+		border-radius:20px;
+		margin-left:5px;
+		margin-right:5px;
+	}
+
+	.btnCantidad:hover{
+		@include condicional($fondo, $fondoAlt);
+	}
+
+	.fila{
+		justify-content: space-around;
+		//align-items: center;
+
+		width: 100%;
+
+		display:flex;
+		flex-direction: row;
+
+		flex-wrap: wrap;
+
+	}
+
+
 
 
 /* Anulo los efectos de botones de Bootstrap para este botón */
-	.botonOscuro{ 
+	.botonOscuro{
 		background-color: transparent;
-		border-width: 0px; 
+		border-width: 0px;
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		width: 100%;
@@ -184,11 +282,11 @@ body{
 	}
 }
 
-$redes: ( 
+$redes: (
         facebook: url("../img/icon_facebook.png"),
         instagram: url("../img/icon_instagram.png"),
         whatsapp: url("../img/icon_whatsapp.png")
-); 
+);
 
 @each $red, $imagen in $redes {
    .btn--#{$red} {
@@ -201,31 +299,38 @@ $redes: (
 }
 
 .Texto-0{
-	font-family: 'Open Sans', sans-serif; 
+	font-family: 'Open Sans', sans-serif;
 	color:#eee;
 	font-weight: 300;
-	font-size: 14px;
+	font-size: 14px;;
 }
 
-@for $i from 1 through 4 {
-    .Texto-#{$i} { 
-	  	font-size: $i * 6px; 
+
+@for $i from 1 through 6 {
+    .Texto-#{$i} {
+	  	font-size: $i * 6px;
 		@if $Design == 1 {
 			color: $colorTitulo;
 		} @else {
 			color: $colorTituloAlt;
 		}
-		font-weight: bold;
 		font-family: 'Dancing Script', cursive;
-		font-weight: 700;
-		margin: 15px 0px 15px 0px;
+		font-weight: 400;
+		margin-top: $i * 3px;
+		margin-right: 0;
+		margin-bottom: $i * 3px;
+		margin-left: 0;
 	}
 }
 
+.error{
+	color:red;
+}
+
 @media all and (min-width: 480px){
-	@for $i from 1 through 4 {
-	    .Texto-#{$i} { 
-		  	font-size: $i * 10px; 
+	@for $i from 1 through 6 {
+	    .Texto-#{$i} {
+		  	font-size: $i * 6px;
 		}
 	}
 }
@@ -237,7 +342,7 @@ $redes: (
 	min-height: 250px;
 	background-size: cover;
 	background-position:center;
-	}	
+	}
 }
 
 @for $i from 1 through 4 {
@@ -252,10 +357,10 @@ $redes: (
 @keyframes aparecer{
 	0% {
 		opacity: 0;
-	}	
+	}
 	100% {
 		opacity: 1;
-	}	
+	}
 }
 
 .textoCentrado{
@@ -266,4 +371,8 @@ $redes: (
 	display:flex;
 	justify-content: center;
 	margin: 0% 20px 0% 20px;
+}
+
+.negrita{
+	font-weight: 700;
 }
