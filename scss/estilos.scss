@@ -146,8 +146,6 @@ body{
 
 			img{
 				border-radius: 10px;
-				animation-duration: 2s;
-				animation-name: aparecer;
 				height: 180px;
 				margin-left: 10px;
 			}
@@ -171,8 +169,6 @@ body{
 
 			img{
 				border-radius: 10px;
-				animation-duration: 2s;
-				animation-name: aparecer;
 				height: 100px;
 				margin-left: 10px;
 			}
@@ -351,15 +347,6 @@ $redes: (
 			background-image: url("../img/banner#{$i}.png");
 			min-height: 450px;
 		}
-	}
-}
-
-@keyframes aparecer{
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
 	}
 }
 
