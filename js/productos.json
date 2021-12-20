@@ -1,0 +1,6 @@
+[
+    { "id": 1, "Nombre": "Smirnoff clásico", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 500, "Contenido": 700},
+    { "id": 2, "Nombre": "Fernet", "Marca": "Branca", "Bebida": "Fernet", "Precio": 700, "Contenido": 1000},
+    { "id": 3, "Nombre": "Smirnoff Raspberry", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 650, "Contenido": 700},
+    { "id": 4, "Nombre": "Smirnoff Apple", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 650, "Contenido": 700}
+]

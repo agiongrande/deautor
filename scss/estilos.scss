@@ -103,6 +103,15 @@ body{
 		}
 	}
 
+	.filtroValor{
+		width: 50% !important;
+		height: 50% !important;
+		font-size: 14px;
+		text-align: center;
+		margin: auto;
+		margin-top: 6px;
+	}
+
 	.btnEnviar{
 		width: 100%;
 		@include condicional($gradientFinal, $gradientFinalAlt);
@@ -127,6 +136,23 @@ body{
 		flex-wrap: wrap;
 		align-items: center;
 
+		.filtros{
+			border-color: #000000;
+			border-radius: 10px;
+			border-width: 1px;
+			border-style: solid;
+
+			justify-content: space-around;
+			align-items:center;
+
+			padding: 10px;
+			margin: 10px;
+
+			display:flex;
+			flex-direction: column;
+
+		}
+
 		.item{
 			border-color: #000000;
 			border-radius: 10px;
@@ -137,9 +163,9 @@ body{
 			align-items:center;
 
 			height: 200px;
-			width: 350px;
+			width: 320px;
 
-			margin: 2% 3% 2% 3%;
+			margin: 2% 0% 2% 0%;
 
 			display:flex;
 			flex-direction: row;
@@ -205,6 +231,21 @@ body{
 	}
 
 	.btnTienda:hover{
+		@include condicional($fondo, $fondoAlt);
+	}
+
+	.btnOcultarCarrito{
+		width: 70%;
+		@include condicional($gradientFinal, $gradientFinalAlt);
+		margin-bottom:5px;
+		border-color: #000000;
+		border-radius:20px;
+		font-weight: 300;
+		font-family: 'Dancing Script', cursive;
+		font-size: 10px;
+	}
+
+	.btnOcultarCarrito:hover{
 		@include condicional($fondo, $fondoAlt);
 	}
 
