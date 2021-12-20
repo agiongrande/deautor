@@ -2,9 +2,9 @@
     { "id": 1, "Nombre": "Smirnoff clásico", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 500, "Contenido": 750},
     { "id": 2, "Nombre": "Fernet", "Marca": "Branca", "Bebida": "Fernet", "Precio": 700, "Contenido": 1000},
     { "id": 3, "Nombre": "Smirnoff Raspberry", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 650, "Contenido": 750},
-    { "id": 4, "Nombre": "Smirnoff Apple", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 650, "Contenido": 750}
-    { "id": 5, "Nombre": "Fernet Menta", "Marca": "Branca", "Bebida": "Fernet", "Precio": 720, "Contenido": 750}
-    { "id": 6, "Nombre": "Gancia", "Marca": "Gancia", "Bebida": "Gancia", "Precio": 350, "Contenido": 1000}
-    { "id": 7, "Nombre": "Absolut clásico", "Marca": "Absolut", "Bebida": "Vodka", "Precio": 1000, "Contenido": 750}
+    { "id": 4, "Nombre": "Smirnoff Apple", "Marca": "Smirnoff", "Bebida": "Vodka", "Precio": 650, "Contenido": 750},
+    { "id": 5, "Nombre": "Fernet Menta", "Marca": "Branca", "Bebida": "Fernet", "Precio": 720, "Contenido": 750},
+    { "id": 6, "Nombre": "Gancia", "Marca": "Gancia", "Bebida": "Gancia", "Precio": 350, "Contenido": 1000},
+    { "id": 7, "Nombre": "Absolut clásico", "Marca": "Absolut", "Bebida": "Vodka", "Precio": 1000, "Contenido": 750},
     { "id": 8, "Nombre": "Absolut Raspberry", "Marca": "Absolut", "Bebida": "Vodka", "Precio": 1200, "Contenido": 750}
 ]
