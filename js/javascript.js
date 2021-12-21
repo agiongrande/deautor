@@ -157,9 +157,129 @@ $(document).ready(function(){
             }).showToast();
     }
 
+    function cargarFiltros(){
+        for (const prodMostrar of productos){
+
+            if (!filtroTipo.includes(prodMostrar.tipo)){
+                filtroTipo.push (prodMostrar.tipo)
+            }
+            if (!filtroPrecio.includes(prodMostrar.precio)){
+                filtroPrecio.push (prodMostrar.precio)
+            }
+            if (!filtroContenido.includes(prodMostrar.medida)){
+                filtroContenido.push (prodMostrar.medida)
+            }
+        }
+
+        let html = "<div class=filtros>Tipo de bebida";
+
+        for (const tipo of filtroTipo){
+            html = html + `<label><input type="checkbox" checked id="tipo_${tipo}"> ${tipo}</label>`
+        }
+
+        html = html + "</div>"
+        $("#Filtros").append(html);
+
+        for (const tipo of filtroTipo){
+            $("#tipo_"+tipo).click(function(){
+                $("#Bebidas").empty();
+                cargarProductos();
+            })
+        }
+
+        html = "<div class=filtros>Rango de precio";
+        let minimo = Math.min.apply(null, filtroPrecio)
+        let maximo = Math.max.apply(null, filtroPrecio)
+        html = html + `<input type="Text" class=filtroValor id=minimo value=${minimo}>`
+        html = html + `<input type="Text" class=filtroValor id=maximo value=${maximo}>`
+        html = html + "</div>"
+
+        $("#Filtros").append(html);
+
+        $("#minimo").change(function(){
+            $("#Bebidas").empty();
+            cargarProductos();
+        })
+
+        $("#maximo").change(function(){
+            $("#Bebidas").empty();
+            cargarProductos();
+        })
+
+        html = "<div class=filtros>Medida (en ml)";
+        for (const contenido of filtroContenido){
+            html = html + `<label><input type="checkbox" checked id="contenido_${contenido}"> ${contenido}</label>`
+        }
+        html = html + "</div>"
+        $("#Filtros").append(html);
+
+        for (const contenido of filtroContenido){
+            $("#contenido_"+contenido).click(function(){
+                $("#Bebidas").empty();
+                cargarProductos();
+            })
+        }
+    }
+
+    function cargarProductos(){
+        for (const prodMostrar of productos){
+            let i = prodMostrar.id;
+
+            if($("#tipo_"+prodMostrar.tipo).prop("checked")==true){
+                if($("#contenido_"+prodMostrar.medida).prop("checked")==true){
+                    if($("#minimo").val() <= prodMostrar.precio && $("#maximo").val() >= prodMostrar.precio){
+
+                        $("#Bebidas").append(`
+                            <div class='item' id='item${i}'>
+                                <div class='col-4'>
+                                    <img src='img/bebida${i}.png'>
+                                </div>
+                                <div class='col-8'>
+                                    <div class='Texto-3'>
+                                        ${prodMostrar.nombre}
+                                    </div>
+                                    <div class='Texto-3'>
+                                        $ ${prodMostrar.precio} (${prodMostrar.medida} ml)
+                                    </div>
+                                    <div name='comprar' id='comprar_${i}' class='btn btn-primary btnTienda'>
+                                        Agregar al carrito
+                                    </div>
+                                    <div class='fila'>
+                                        <div class='btn btn-primary btnCantidad' id='restar_${i}'>-</div>
+                                        <div class='Texto-3' id='cantidad_${i}'>0</div>
+                                        <div class='btn btn-primary btnCantidad' id='sumar_${i}'>+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        `)
+
+                        $("#comprar_"+i).click(function(){
+                            prodMostrar.vender(parseInt($("#cantidad_"+i).html()));
+                        })
+
+                        $("#restar_"+i).click(function(){
+                            cambiarCantidad(i,-1);
+                        })
+
+                        $("#sumar_"+i).click(function(){
+                            cambiarCantidad(i,1);
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+    function cambiarCantidad(item, cantidad){
+        let nuevaCantidad = parseInt($("#cantidad_"+item).html()) + cantidad;
+        if ((nuevaCantidad >= 0) && (nuevaCantidad < 6)){
+            $("#cantidad_"+item).html(nuevaCantidad);
+        }
+    }
+
     function continuarCompra(){
         $("#Bebidas").slideUp("slow", function(){
-            $("#Bebidas").empty(); 
+            $("#Bebidas").empty();
 
             $("#Bebidas").append(`
                 <div class='formularioCompra'>
@@ -235,129 +355,6 @@ $(document).ready(function(){
             carrito.splice(0, carrito.length);
             mostrarCarrito();
             alerta("Compra realizada. Serás contactado a la brevedad a "+mail,"ForestGreen");
-        }
-    }
-
-    function verCantidad(item){
-        return parseInt($("#cantidad_"+item).html());
-    }
-
-    function cambiarCantidad(item, cantidad){
-        let nuevaCantidad = verCantidad(item) + cantidad;
-        if ((nuevaCantidad >= 0) && (nuevaCantidad < 6)){
-            $("#cantidad_"+item).html(nuevaCantidad);
-        }
-    }
-
-function cargarFiltros(){
-    for (const prodMostrar of productos){
-
-        if (!filtroTipo.includes(prodMostrar.tipo)){
-            filtroTipo.push (prodMostrar.tipo)
-        }
-        if (!filtroPrecio.includes(prodMostrar.precio)){
-            filtroPrecio.push (prodMostrar.precio)
-        }
-        if (!filtroContenido.includes(prodMostrar.medida)){
-            filtroContenido.push (prodMostrar.medida)
-        }
-    }
-
-    let html = "<div class=filtros>Tipo de bebida";
-    for (const tipo of filtroTipo){
-        html = html + `<label><input type="checkbox" checked id="tipo_${tipo}">${tipo}</label>`
-    }
-    html = html + "</div>"
-    $("#Filtros").append(html);
-
-    for (const tipo of filtroTipo){
-        $("#tipo_"+tipo).click(function(){
-            $("#Bebidas").empty();
-            cargarProductos();
-        })
-    }
-
-    html = "<div class=filtros>Rango de precio";
-    let minimo = Math.min.apply(null, filtroPrecio)
-    let maximo = Math.max.apply(null, filtroPrecio)
-    html = html + `<input type="Text" class=filtroValor id=minimo value=${minimo}>`
-    html = html + `<input type="Text" class=filtroValor id=maximo value=${maximo}>`
-    html = html + "</div>"
-
-    $("#Filtros").append(html);
-
-    $("#minimo").change(function(){
-        $("#Bebidas").empty();
-        cargarProductos();
-    })
-
-    $("#maximo").change(function(){
-        $("#Bebidas").empty();
-        cargarProductos();
-    })
-
-    html = "<div class=filtros>Medida (en ml)";
-    for (const contenido of filtroContenido){
-        html = html + `<label><input type="checkbox" checked id="contenido_${contenido}">${contenido}</label>`
-    }
-    html = html + "</div>"
-    $("#Filtros").append(html);
-
-    for (const contenido of filtroContenido){
-        $("#contenido_"+contenido).click(function(){
-            $("#Bebidas").empty();
-            cargarProductos();
-        })
-    }
-
-}
-
-    function cargarProductos(){
-        for (const prodMostrar of productos){
-            let i = prodMostrar.id;
-
-            if($("#tipo_"+prodMostrar.tipo).prop("checked")==true){
-                if($("#contenido_"+prodMostrar.medida).prop("checked")==true){
-                    if($("#minimo").val() <= prodMostrar.precio && $("#maximo").val() >= prodMostrar.precio){
-
-                        $("#Bebidas").append(`
-                            <div class='item' id='item${i}'>
-                                <div class='col-4'>
-                                    <img src='img/bebida${i}.png'>
-                                </div>
-                                <div class='col-8'>
-                                    <div class='Texto-3'>
-                                        ${prodMostrar.nombre}
-                                    </div>
-                                    <div class='Texto-3'>
-                                        $ ${prodMostrar.precio} (${prodMostrar.medida} ml)
-                                    </div>
-                                    <div name='comprar' id='comprar_${i}' class='btn btn-primary btnTienda'>
-                                        Agregar al carrito
-                                    </div>
-                                    <div class='fila'>
-                                        <div class='btn btn-primary btnCantidad' id='restar_${i}'>-</div>
-                                        <div class='Texto-3' id='cantidad_${i}'>0</div>
-                                        <div class='btn btn-primary btnCantidad' id='sumar_${i}'>+</div>
-                                    </div>
-                                </div>
-                            </div>
-                        `)
-
-                        $("#comprar_"+i).click(function(){
-                            prodMostrar.vender(verCantidad(i));
-                        })
-
-                        $("#restar_"+i).click(function(){
-                            cambiarCantidad(i,-1);
-                        })
-
-                        $("#sumar_"+i).click(function(){
-                            cambiarCantidad(i,1);
-                        })
-                    }
-                }
-            }
         }
     }
 
