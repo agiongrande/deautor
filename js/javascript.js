@@ -48,7 +48,7 @@ $(document).ready(function(){
     const filtroPrecio = [];
     const filtroContenido = [];
 
-    const URL = "/js/productos.json";
+    const URL = "https://agiongrande.github.io/deautor/js/productos.json";
 
     $.get(URL,function(respuesta, estado){
         if (estado == "success"){
@@ -57,7 +57,6 @@ $(document).ready(function(){
             }
             cargarFiltros();
             cargarProductos();
-            
         }
     })
 
