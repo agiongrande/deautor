@@ -48,7 +48,7 @@ $(document).ready(function(){
     const filtroPrecio = [];
     const filtroContenido = [];
 
-    const URL = "js/productos.json";
+    const URL = "/js/productos.json";
 
     $.get(URL,function(respuesta, estado){
         if (estado == "success"){
