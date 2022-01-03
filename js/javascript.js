@@ -333,11 +333,11 @@ $(document).ready(function(){
                     <div class=fila>
                         <div>
                             <label for='nombreText' class='Texto-3'>Nombre Comprador</label>
-                            <input type='text' class='form-control input' id='nombreText' value='' required />
+                            <input type='text' class='form-control input' id='nombreText' value='' placeholder='Quien recibirá el pedido' required />
                             <label for='direccionText' class='Texto-3'>Direccion de Envío</label>
-                            <input type='text' class='form-control input' id='direccionText' value='' required />
+                            <input type='text' class='form-control input' id='direccionText' value='' placeholder='Dirección en CABA' required />
                             <label for='mailText' class='Texto-3'>Correo electrónico</label>
-                            <input type='email' class='form-control input' id='mailText' value='' required />
+                            <input type='email' class='form-control input' id='mailText' value='' placeholder='direccion@mail.com' required />
                         </div>
                         <div>
                             <label for='tarjeta' class='Texto-3'>Número de Tarjeta</label>
