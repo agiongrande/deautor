@@ -201,10 +201,10 @@ $(document).ready(function(){
             }
         }
 
-        let html = "<div class=filtros>Tipo de bebida";
+        let html = "<div class=filtros><div class=Texto-3>Tipo de bebida</div>";
 
         for (const tipo of filtroTipo){
-            html = html + `<label><input type="checkbox" checked id="tipo_${tipo}"> ${tipo}</label>`
+            html = html + `<label class="Texto-2"><input type="checkbox" checked id="tipo_${tipo}"> ${tipo}</label>`
         }
 
         html = html + "</div>"
@@ -217,7 +217,7 @@ $(document).ready(function(){
             })
         }
 
-        html = "<div class=filtros>Rango de precio";
+        html = "<div class=filtros><div class=Texto-3>Rango de precio</div>";
         let minimo = Math.min.apply(null, filtroPrecio)
         let maximo = Math.max.apply(null, filtroPrecio)
         html = html + `<input type="number" class=filtroValor id=minimo value=${minimo}>`
@@ -236,9 +236,9 @@ $(document).ready(function(){
             cargarProductos();
         })
 
-        html = "<div class=filtros>Medida (en ml)";
+        html = "<div class=filtros><div class=Texto-3>Medida (en ml)</div>";
         for (const contenido of filtroContenido){
-            html = html + `<label><input type="checkbox" checked id="contenido_${contenido}"> ${contenido}</label>`
+            html = html + `<label class=Texto-2><input type="checkbox" checked id="contenido_${contenido}"> ${contenido}</label>`
         }
         html = html + "</div>"
         $("#Filtros").append(html);
