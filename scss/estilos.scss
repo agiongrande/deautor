@@ -93,13 +93,19 @@ body{
 		flex-direction: row;
 
 		input{
-			width: 90% !important;
-			height: 90% !important;
+	//		width: 98% !important;
+	//		height: 12% !important;
 			font-size: 14px;
 			text-align: center;
 			margin: auto;
 			margin-top: -6px;
 			margin-bottom: 8px;
+		}
+		.chico{
+			width: 90% !important;
+		}
+		.grande{
+			width: 98% !important;
 		}
 	}
 
@@ -263,9 +269,28 @@ body{
 		@include condicional($fondo, $fondoAlt);
 	}
 
+	.textoBotonMenosMas{
+		margin-top:-8px;
+		margin-left:-3px;
+	}
+
+	.btnCantidadCarrito{
+		width: 25px;
+		height: 25px;
+		@include condicional($gradientFinal, $gradientFinalAlt);
+		border-color: #000000;
+		border-radius:20px;
+		margin-left:5px;
+		margin-right:5px;
+	}
+
+	.btnCantidadCarrito:hover{
+		@include condicional($fondo, $fondoAlt);
+	}
+
+
 	.fila{
 		justify-content: space-around;
-		//align-items: center;
 
 		width: 100%;
 
@@ -276,7 +301,18 @@ body{
 
 	}
 
+	.filaBotones{
+		justify-content: space-around;
+		align-items: center;
 
+		margin-bottom: -5px;
+
+		width: 100%;
+
+		display:flex;
+		flex-direction: row;
+
+	}
 
 
 /* Anulo los efectos de botones de Bootstrap para este botón */

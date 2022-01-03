@@ -69,9 +69,18 @@ $(document).ready(function(){
         mostrarCarrito();
     }
 
+    function eliminarProducto(item){
+        let index = carrito.findIndex(function(cual){
+            return cual.id == item
+        });
+        carrito.splice(index, 1);
+        mostrarCarrito();
+    }
+
     function mostrarCarrito(){
         $("#carrito").empty();
         $("#detalleCarrito").empty();
+        $("#totalCarro").empty();
         let sumaTotal = 0;
         if (carrito.length >0){
             $("#detalleCarrito").append("<div id=detalleCarrito><button class='btn btn-primary btnOcultarCarrito'></button></div>")
@@ -101,7 +110,11 @@ $(document).ready(function(){
                 </div>
                 <div class='col-8'>
                     <div class='Texto-2'>
-                        Cantidad: ${productoBuscado.cantidad}
+                        <div class='filaBotones'>
+                            <div class='btn btn-primary btnCantidadCarrito' id='restarCarrito_${productoBuscado.id}'><div class="textoBotonMenosMas">-</div></div>
+                            <div class='Texto-2' id='cantidadCarrito_${productoBuscado.id}'>${productoBuscado.cantidad}</div>
+                            <div class='btn btn-primary btnCantidadCarrito' id='sumarCarrito_${productoBuscado.id}'><div class="textoBotonMenosMas">+</div></div>
+                        </div>
                     </div>
                     <div class='Texto-2'>
                         Precio: $ ${productoBuscado.precio}
@@ -115,24 +128,54 @@ $(document).ready(function(){
                 </div>
             `)
 
+            $("#restarCarrito_"+productoBuscado.id).click(function(){
+                cambiarCantidadCarrito(productoBuscado.id,-1);
+            })
+
+            $("#sumarCarrito_"+productoBuscado.id).click(function(){
+                cambiarCantidadCarrito(productoBuscado.id,1);
+            })
+
             $("#elimina_"+productoBuscado.id).click(function(){
-                let index = carrito.findIndex(function(cual){
-                    return cual.id == productoBuscado.id
-                });
-                carrito.splice(index, 1);
-                mostrarCarrito();
+                eliminarProducto(productoBuscado.id);
             })
         }
         if (sumaTotal > 0) {
-
-            totalCarro.innerHTML = `
+            let costoEnvio = 300;
+            let sumaTotalMasEnvio;
+            const montoEnvioGratuito=5000;
+            $("#totalCarro").append(`
                 <p class='Texto-3 negrita'>
-                    Total: $ ${sumaTotal}
+                    Subtotal: $ ${sumaTotal}
+                </p>
+            `)
+            if (sumaTotal>=montoEnvioGratuito){
+                sumaTotalMasEnvio = sumaTotal;
+                $("#totalCarro").append(`
+                    <p class='Texto-3 negrita'>
+                        Envío: ¡Gratis!
+                    </p>
+                `)
+            }else{
+                sumaTotalMasEnvio = sumaTotal + costoEnvio;
+                $("#totalCarro").append(`
+                    <p class='Texto-3 negrita'>
+                        Envío: $ ${costoEnvio} *
+                    </p>
+                `)
+            }
+            $("#totalCarro").append(`
+                <p class='Texto-3 negrita'>
+                    Total: $ ${sumaTotalMasEnvio}
                 </p>
                 <form action=''>
                     <button class='btn btn-primary btnTienda' id=continuar>Comprar</button>
-                </form>
-                `
+                </form>`)
+            if (sumaTotal<montoEnvioGratuito){
+                let diferencia = montoEnvioGratuito - sumaTotal;
+                $("#totalCarro").append(`
+                <div class=Texto-2>* Envío gratuito para compras mayores a $5000. Compra $ ${diferencia} más para acceder al beneficio!</div>`)
+            }
             $("#continuar").click(function(e){
                 e.preventDefault();
                 continuarCompra();
@@ -142,19 +185,6 @@ $(document).ready(function(){
         }
 
     localStorage.setItem("Carrito", JSON.stringify(carrito));
-    }
-
-    function alerta(mensaje, color){
-        Toastify({
-            text: mensaje,
-            style: {
-                background: color,
-            },
-            duration: 3000,
-            offset: {
-                y: 100
-            },
-            }).showToast();
     }
 
     function cargarFiltros(){
@@ -190,8 +220,8 @@ $(document).ready(function(){
         html = "<div class=filtros>Rango de precio";
         let minimo = Math.min.apply(null, filtroPrecio)
         let maximo = Math.max.apply(null, filtroPrecio)
-        html = html + `<input type="Text" class=filtroValor id=minimo value=${minimo}>`
-        html = html + `<input type="Text" class=filtroValor id=maximo value=${maximo}>`
+        html = html + `<input type="number" class=filtroValor id=minimo value=${minimo}>`
+        html = html + `<input type="number" class=filtroValor id=maximo value=${maximo}>`
         html = html + "</div>"
 
         $("#Filtros").append(html);
@@ -270,6 +300,21 @@ $(document).ready(function(){
         }
     }
 
+    function cambiarCantidadCarrito(item, cantidad){
+        let nuevaCantidad = parseInt($("#cantidadCarrito_"+item).html()) + cantidad;
+        if ((nuevaCantidad >= 0) && (nuevaCantidad < 6)){
+            let productoBuscado
+            for (const prod of carrito){
+                productoBuscado = carrito.find(producto => producto.id == item);
+            }
+            productoBuscado.cantidad = nuevaCantidad;
+            if (nuevaCantidad==0){
+                eliminarProducto(productoBuscado.id)
+            }
+            mostrarCarrito();
+        }
+    }
+
     function cambiarCantidad(item, cantidad){
         let nuevaCantidad = parseInt($("#cantidad_"+item).html()) + cantidad;
         if ((nuevaCantidad >= 0) && (nuevaCantidad < 6)){
@@ -278,18 +323,38 @@ $(document).ready(function(){
     }
 
     function continuarCompra(){
+
         $("#Bebidas").slideUp("slow", function(){
             $("#Bebidas").empty();
 
-            $("#Bebidas").append(`
+            $("#Bebidas").html(`
                 <div class='formularioCompra'>
                     <form action=''>
-                        <label for='nombreText' class='Texto-3'>Nombre</label>
-                        <input type='text' class='form-control input' id='nombreText' value='' required />
-                        <label for='direccionText' class='Texto-3'>Direccion</label>
-                        <input type='text' class='form-control input' id='direccionText' value='' required />
-                        <label for='mailText' class='Texto-3'>Correo electrónico</label>
-                        <input type='email' class='form-control input' id='mailText' value='' required />
+                    <div class=fila>
+                        <div>
+                            <label for='nombreText' class='Texto-3'>Nombre Comprador</label>
+                            <input type='text' class='form-control input' id='nombreText' value='' required />
+                            <label for='direccionText' class='Texto-3'>Direccion de Envío</label>
+                            <input type='text' class='form-control input' id='direccionText' value='' required />
+                            <label for='mailText' class='Texto-3'>Correo electrónico</label>
+                            <input type='email' class='form-control input' id='mailText' value='' required />
+                        </div>
+                        <div>
+                            <label for='tarjeta' class='Texto-3'>Número de Tarjeta</label>
+                            <input type='text' class='form-control input grande' id='numTC' value='' placeholder='1234 - 5678 - 9012 - 3456' maxlength=25 required />
+                            <label for='tarjeta' class='Texto-3'>Nombre en Tarjeta</label>
+                            <input type='text' class='form-control input grande' id='nombreTC' value='' placeholder='Nombre y Apellido como figura en la tarjeta' maxlength=30 required />
+                            <div class=fila>
+                                <div>
+                                    <label for='tarjeta' class='Texto-3'>Vencimiento</label>
+                                    <input type='text' class='form-control input chico' id='fechaTC' value='' placeholder='MM/AAAA' maxlength=7 required />
+                                </div>
+                                <div>
+                                    <label for='tarjeta' class='Texto-3'>CVS</label>
+                                    <input type='number' class='form-control input chico' maxlength='3' id='cvsTC' value='' placeholder='123'  required />
+                                </div>
+                            </div>
+                        </div>
                         <button class='btn btn-primary btnTienda' id=finalizar>Confirmar compra</button>
                         <button class='btn btn-primary btnTienda' id=volver>Volver a la compra</button>
                     </form>
@@ -303,6 +368,26 @@ $(document).ready(function(){
                 finalizarCompra();
             });
 
+            $("#numTC").keyup(function(e){
+                let cadena = $("#numTC").val().replace(/\D/g,'')
+                let formatted = cadena.substr(0, 4)
+                for (let index = 4; index < 16; index+=4) {
+                    if (index < cadena.length){
+                        formatted = formatted + ' - ' + cadena.substr(index, 4)
+                    }
+                }
+                $("#numTC").val(formatted)
+            });
+
+            $("#fechaTC").keyup(function(e){
+                let cadena = $("#fechaTC").val().replace(/\D/g,'')
+                let formatted = cadena.substr(0, 2)
+                if(cadena.length >2){
+                    formatted = formatted + '/' + cadena.substr(2, 4)
+                }
+                $("#fechaTC").val(formatted)
+            });
+
             $("#volver").click(function(e){
                 e.preventDefault();
                 $("#Bebidas").slideUp("slow", function(){
@@ -312,50 +397,109 @@ $(document).ready(function(){
                 });
 
             });
-
         })
-
     }
+
 
     function finalizarCompra(){
         let nombre = $("#nombreText").val();
         let direccion = $("#direccionText").val();
         let mail = $("#mailText").val();
+        let numTC = $("#numTC").val();
+        let nombreTC = $("#nombreTC").val();
+        let fechaTC = $("#fechaTC").val();
+        let cvsTC = $("#cvsTC").val();
 
         let compraCorrecta = true;
 
-        if (nombre == ""){
-            alerta("Tenés que completar el nombre","red");
-            compraCorrecta = false;
-        }
-
-        if(direccion == ""){
-            alerta("Tenés que completar la dirección","red");
-            compraCorrecta = false;
-        }
-
-        if(mail == ""){
-            alerta("Tenés que completar el correo electrónico","red");
-            compraCorrecta = false;
-        } else {
-            if(mail.indexOf("@")==-1){
-                alerta("El email ingresado no es válido","red");
-                compraCorrecta = false;
-            }
-        }
-
-        if (compraCorrecta == true){
-
+        if (carrito.length == 0){
+            alerta("El carrito está vacío, realiza la compra nuevamente","red");
             $("#Bebidas").slideUp("slow", function(){
                 $("#Bebidas").empty();
                 cargarProductos();
                 $("#Bebidas").slideDown("slow");
             });
+        } else {
+            if (nombre == ""){
+                alerta("Tenés que completar el nombre","red");
+                compraCorrecta = false;
+            }
 
-            carrito.splice(0, carrito.length);
-            mostrarCarrito();
-            alerta("Compra realizada. Serás contactado a la brevedad a "+mail,"ForestGreen");
+            if(direccion == ""){
+                alerta("Tenés que completar la dirección","red");
+                compraCorrecta = false;
+            }
+
+            if(mail == ""){
+                alerta("Tenés que completar el correo electrónico","red");
+                compraCorrecta = false;
+            } else {
+                if(mail.indexOf("@")==-1 || mail.indexOf(".")==-1){
+                    alerta("El email ingresado no es válido","red");
+                    compraCorrecta = false;
+                }
+            }
+
+            if (numTC.length < 25){
+                alerta("Número de tarjeta inválido","red");
+                compraCorrecta = false;
+            }
+
+            if (nombreTC == ""){
+                alerta("Tenés que completar el nombre tal cual figura en la  tarjeta","red");
+                compraCorrecta = false;
+            }
+
+            if (fechaTC == ""){
+                alerta("Tenés que completar la fecha de vencimiento de la tarjeta","red");
+                compraCorrecta = false;
+            }  else {
+                let fechas = fechaTC.split("/")
+
+                if (fechas[0] < 0 || fechas[0] >12){
+                    alerta("El mes de vencimiento de la Tarjeta es incorrecto","red");
+                    compraCorrecta = false;
+                }
+                if (fechas[1] <= 2021 || fechas[1] >2040){
+                    alerta("El año de vencimiento de la Tarjeta es incorrecto","red");
+                    compraCorrecta = false;
+                }
+            }
+
+            if (cvsTC == ""){
+                alerta("Tenés que completar el código de seguridad de la tarjeta","red");
+                compraCorrecta = false;
+            } else if (cvsTC < 0 || cvsTC.length !=3) {
+                alerta("Código de seguridad incorrecto","red");
+                compraCorrecta = false;
+            }
+
+            if (compraCorrecta == true){
+
+                $("#Bebidas").slideUp("slow", function(){
+                    $("#Bebidas").empty();
+                    cargarProductos();
+                    $("#Bebidas").slideDown("slow");
+                });
+
+                carrito.splice(0, carrito.length);
+                mostrarCarrito();
+                alerta("Compra realizada. Serás contactado a la brevedad a "+mail,"ForestGreen");
+            }
         }
+    }
+
+    function alerta(mensaje, color){
+        Toastify({
+            text: mensaje,
+            style: {
+                background: color,
+            },
+            duration: 3000,
+            offset: {
+                y: 100
+            },
+            }).showToast();
     }
 
 })
