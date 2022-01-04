@@ -33,6 +33,7 @@ $(document).ready(function(){
                     carrito.push(new Carrito(this.id, cantidad, this.precio));
                 }else{
                     if (productoBuscado.cantidad + cantidad > maximoUnidades) {
+                        productoBuscado.cantidad = maximoUnidades;
                         alerta("El máximo de unidades totales es "+maximoUnidades,"red")
                     }else{
                         productoBuscado.cantidad += cantidad;
