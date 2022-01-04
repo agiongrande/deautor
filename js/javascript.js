@@ -32,7 +32,11 @@ $(document).ready(function(){
                 if (productoBuscado == null){
                     carrito.push(new Carrito(this.id, cantidad, this.precio));
                 }else{
-                    productoBuscado.cantidad += cantidad;
+                    if (productoBuscado.cantidad + cantidad > maximoUnidades) {
+                        alerta("El máximo de unidades totales es "+maximoUnidades,"red")
+                    }else{
+                        productoBuscado.cantidad += cantidad;
+                    }
                 }
 
                 $("#cantidad_"+this.id).html("0");
@@ -47,6 +51,7 @@ $(document).ready(function(){
     const filtroTipo = [];
     const filtroPrecio = [];
     const filtroContenido = [];
+    const maximoUnidades = 20;
 
     const URL = "https://agiongrande.github.io/deautor/js/productos.json";
 
@@ -302,7 +307,7 @@ $(document).ready(function(){
 
     function cambiarCantidadCarrito(item, cantidad){
         let nuevaCantidad = parseInt($("#cantidadCarrito_"+item).html()) + cantidad;
-        if ((nuevaCantidad >= 0) && (nuevaCantidad < 6)){
+        if ((nuevaCantidad >= 0) && (nuevaCantidad <= maximoUnidades)){
             let productoBuscado
             for (const prod of carrito){
                 productoBuscado = carrito.find(producto => producto.id == item);
@@ -312,13 +317,17 @@ $(document).ready(function(){
                 eliminarProducto(productoBuscado.id)
             }
             mostrarCarrito();
+        } else if (nuevaCantidad >= maximoUnidades){
+            alerta("El máximo de unidades totales es "+maximoUnidades,"red")
         }
     }
 
     function cambiarCantidad(item, cantidad){
         let nuevaCantidad = parseInt($("#cantidad_"+item).html()) + cantidad;
-        if ((nuevaCantidad >= 0) && (nuevaCantidad < 6)){
+        if ((nuevaCantidad >= 0) && (nuevaCantidad <= maximoUnidades)){
             $("#cantidad_"+item).html(nuevaCantidad);
+        } else if (nuevaCantidad >= maximoUnidades){
+            alerta("El máximo de unidades totales es "+maximoUnidades,"red")
         }
     }
 
