@@ -361,7 +361,7 @@ $(document).ready(function(){
                                 </div>
                                 <div>
                                     <label for='tarjeta' class='Texto-3'>CVS</label>
-                                    <input type='number' class='form-control input chico' maxlength='3' id='cvsTC' value='' placeholder='123'  required />
+                                    <input type='text' class='form-control input chico' maxlength='3' id='cvsTC' value='' placeholder='123'  required />
                                 </div>
                             </div>
                         </div>
@@ -396,6 +396,11 @@ $(document).ready(function(){
                     formatted = formatted + '/' + cadena.substr(2, 4)
                 }
                 $("#fechaTC").val(formatted)
+            });
+
+            $("#cvsTC").keyup(function(e){
+                let cadena = $("#cvsTC").val().replace(/\D/g,'')
+                $("#cvsTC").val(cadena)
             });
 
             $("#volver").click(function(e){
